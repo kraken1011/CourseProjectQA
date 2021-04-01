@@ -15,8 +15,8 @@ public class SignInPage extends BasePage {
         super(driver);
     }
 
-    public MainStatsPage query(String searchField){
+    public SignUpPage clickSignUpButton(){
         createAcc.click();
-        return new MainStatsPage(driver);
+        return new SignUpPage(driver);
     }
 }

@@ -11,10 +11,10 @@ public class HomePage extends BasePage {
     @FindBy(id = "yfin-usr-qry")
     private WebElement search;
 
-    @FindBy(xpath = "//span[contains(text()='Sign in')]")
+    @FindBy(id = "header-desktop-search-button")
     private WebElement searchButton;
 
-    @FindBy(id = "signin-button")
+    @FindBy(id = "header-signin-link")
     private WebElement signInBtn;
 
     public HomePage (WebDriver driver){
@@ -27,7 +27,9 @@ public class HomePage extends BasePage {
         return new MainStatsPage(driver);
     }
 
-    public SignInPage signInPage(){
+
+
+    public SignInPage clickSignInButton(){
         signInBtn.click();
         return new SignInPage(driver);
     }

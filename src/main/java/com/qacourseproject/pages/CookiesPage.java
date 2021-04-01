@@ -13,7 +13,7 @@ public class CookiesPage  extends BasePage{
         super(driver);
     }
 
-    public HomePage homePage() {
+    public HomePage goToHomePage() {
         acceptBtn.click();
         return new HomePage(driver);
     }

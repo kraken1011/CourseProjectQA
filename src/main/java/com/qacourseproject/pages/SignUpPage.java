@@ -31,7 +31,35 @@ public class SignUpPage extends BasePage {
     @FindBy(id = "usernamereg-year")
     private WebElement yearOfBirth;
 
-    public SignUpPage (WebDriver driver) {
+    public SignUpPage  (WebDriver driver) {
         super(driver);
+    }
+
+    public SignUpPage fillName(){
+        firstName.sendKeys();
+        lastName.sendKeys();
+        return new SignUpPage(driver);
+    }
+
+    public SignUpPage fillEmail(){
+        email.sendKeys();
+        return new SignUpPage(driver);
+    }
+
+    public SignUpPage fillPass(){
+        password.sendKeys();
+        return new SignUpPage(driver);
+    }
+
+    public SignUpPage fillPhone(){
+        phoneNumber.sendKeys();
+        return new SignUpPage(driver);
+    }
+
+    public SignUpPage fillDateOfBirth(){
+        monthOfBirth.click();
+        dayOfBirth.sendKeys();
+        yearOfBirth.sendKeys();
+        return new SignUpPage(driver);
     }
 }
