@@ -35,6 +35,22 @@ public class SignUpPage extends BasePage {
         super(driver);
     }
 
+    public String getEmailValidationMessage(){
+        return email.getText();
+    }
+
+    public String getPasswordValidationMessage(){
+        return password.getText();
+    }
+
+    public String getPhoneNumberValidationMessage(){
+        return phoneNumber.getText();
+    }
+
+    public String getBirthDateValidationMessage(){
+        return dayOfBirth.getText();
+    }
+
     public SignUpPage fillName(){
         firstName.sendKeys();
         lastName.sendKeys();
