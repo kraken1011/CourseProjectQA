@@ -10,8 +10,12 @@ public class MainStatsPage extends BasePage {
     @FindBy(xpath = "//span[contains(text()=’Statistics’)]")
     private WebElement statisticsBtn;
 
-    @FindBy(css = "[data-test=‘DIVIDENT_AND_YIELD-value’]")
-    private WebElement dividendsValue;
+    @FindBy(xpath = "//td[@data-test='DIVIDEND_AND_YIELD-value']")
+    private WebElement dividendsVal;
+
+    public String getDividendsValue(){
+        return dividendsVal.getText();
+    }
 
     public MainStatsPage (WebDriver driver) {
         super(driver);

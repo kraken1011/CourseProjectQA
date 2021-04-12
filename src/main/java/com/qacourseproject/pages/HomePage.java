@@ -9,7 +9,7 @@ public class HomePage extends BasePage {
 
 
     @FindBy(id = "yfin-usr-qry")
-    private WebElement search;
+    private WebElement searchInput;
 
     @FindBy(id = "header-desktop-search-button")
     private WebElement searchButton;
@@ -21,8 +21,8 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    public MainStatsPage query(String searchField){
-        search.sendKeys(searchField);
+    public MainStatsPage searchCompany(String searchField){
+        searchInput.sendKeys(searchField);
         searchButton.click();
         return new MainStatsPage(driver);
     }

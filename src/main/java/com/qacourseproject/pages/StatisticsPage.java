@@ -7,8 +7,12 @@ import org.openqa.selenium.support.PageFactory;
 
 public class StatisticsPage extends BasePage {
 
-    @FindBy(xpath = "//*[@id=“Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[1]/div/div/div/div/table/tbody/tr[7]/td[2]")
-    private WebElement priceMrq;
+    @FindBy(xpath = "//span[text()='Price/Book']/../following-sibling::td")
+    private WebElement priceMrqVal;
+
+    public String getPriceBookValue() {
+        return priceMrqVal.getText();
+    }
 
     public StatisticsPage (WebDriver driver) {
         super(driver);

@@ -45,14 +45,12 @@ public class SignUpTest extends TestUtil {
         signUpPage.fillPass(password);
         signUpPage.fillPhone(phoneNumber);
         signUpPage.fillDateOfBirth(birthMonth, birthDay, birthYear);
-
         signUpPage.clickSubmit();
-        Reporter.log("Successful click on the submit button");
 
         //how to format code intellij macOS hotkey
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(signUpPage.getEmailValidationMessage(), "That email address is too short, please use a longer one.");
+        softAssert.assertEquals(signUpPage.getEmailValidationMessage(), "This email address is not available for sign up, try something else");
         softAssert.assertEquals(signUpPage.getPasswordValidationMessage(), "Your password isn’t strong enough, try making it longer.");
         softAssert.assertEquals(signUpPage.getPhoneNumberValidationMessage(), "That doesn’t look right, please re-enter your phone number.");
         softAssert.assertEquals(signUpPage.getBirthDateValidationMessage(), "That doesn’t look right, please re-enter your birthday.");

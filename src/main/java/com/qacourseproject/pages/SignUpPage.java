@@ -16,7 +16,7 @@ public class SignUpPage extends BasePage {
     @FindBy(id = "usernamereg-yid")
     private WebElement emailInput;
 
-    @FindBy(id = "reg-error-yi")
+    @FindBy(id = "reg-error-yid")
     private WebElement emailVal;
 
     @FindBy(id = "usernamereg-password")
