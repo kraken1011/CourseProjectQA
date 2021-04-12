@@ -3,9 +3,7 @@ package com.qacourseproject.base;
 import com.qacourseproject.driver.DriverFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -18,8 +16,10 @@ public class TestUtil {
     private int implicitWait;
     private String browser;
 
-    @BeforeSuite
-    public void readConfigProperties() {
+
+
+    @BeforeMethod
+    public void setUp() {
         try (FileInputStream configFile = new FileInputStream("src/test/resources/config.properties")) {
             Properties config = new Properties();
             config.load(configFile);
@@ -29,10 +29,6 @@ public class TestUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @BeforeTest
-    public void setUp() {
         setupBrowserDriver();
         loadUrl();
     }
@@ -54,7 +50,7 @@ public class TestUtil {
         }
     }
 
-    @AfterTest
+    @AfterMethod
     public void tearDown() {
         driver.quit();
     }

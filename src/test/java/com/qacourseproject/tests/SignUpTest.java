@@ -22,19 +22,13 @@ import java.util.concurrent.TimeUnit;
 public class SignUpTest extends TestUtil {
 
 
-
-    @BeforeTest
-    public void SetUp(){
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    }
-
     @DataProvider(name = "login-data-csv")
     public static Object[][] dataProviderCsv() throws IOException, CsvException {
         return CsvReader.readCsvFile("src/test/resources/login-data.csv");
     }
 
-        @Test(dataProvider = "login-data-csv")
-    public void executeSignUpTest(String firstName, String lastName, String emailAddress, String password, String phoneNumber, String birthMonth, String birthDay, String birthYear){
+    @Test(dataProvider = "login-data-csv")
+    public void executeSignUpTest(String firstName, String lastName, String emailAddress, String password, String phoneNumber, String birthMonth, String birthDay, String birthYear) {
 
         CookiesPage cookiesPage = new CookiesPage(driver);
         HomePage homePage = cookiesPage.goToHomePage();
@@ -46,15 +40,31 @@ public class SignUpTest extends TestUtil {
         SignUpPage signUpPage = signInPage.clickSignUpButton();
         Reporter.log("Successful entry to the Sign In page");
 
-          //  SoftAssert softAssert = new SoftAssert();
+        signUpPage.fillName(firstName, lastName);
+        signUpPage.fillEmail(emailAddress);
+        signUpPage.fillPass(password);
+        signUpPage.fillPhone(phoneNumber);
+        signUpPage.fillDateOfBirth(birthMonth, birthDay, birthYear);
+
+        signUpPage.clickSubmit();
+        Reporter.log("Successful click on the submit button");
+
+        //how to format code intellij macOS hotkey
+
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(signUpPage.getEmailValidationMessage(), "That email address is too short, please use a longer one.");
+        softAssert.assertEquals(signUpPage.getPasswordValidationMessage(), "Your password isn’t strong enough, try making it longer.");
+        softAssert.assertEquals(signUpPage.getPhoneNumberValidationMessage(), "That doesn’t look right, please re-enter your phone number.");
+        softAssert.assertEquals(signUpPage.getBirthDateValidationMessage(), "That doesn’t look right, please re-enter your birthday.");
+
+        softAssert.assertAll();
 
 
-        }
-
+    }
 
 
     @AfterTest
-    public void TearDown(){
+    public void TearDown() {
         driver.quit();
     }
 

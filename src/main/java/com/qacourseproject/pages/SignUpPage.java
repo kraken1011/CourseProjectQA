@@ -8,74 +8,94 @@ import org.openqa.selenium.support.PageFactory;
 public class SignUpPage extends BasePage {
 
     @FindBy(id = "usernamereg-firstName")
-    private WebElement firstName;
+    private WebElement firstNameInput;
 
     @FindBy(id = "usernamereg-lastName")
-    private WebElement lastName;
+    private WebElement lastNameInput;
 
     @FindBy(id = "usernamereg-yid")
-    private WebElement email;
+    private WebElement emailInput;
+
+    @FindBy(id = "reg-error-yi")
+    private WebElement emailVal;
 
     @FindBy(id = "usernamereg-password")
-    private WebElement password;
+    private WebElement passwordInput;
+
+    @FindBy(id = "reg-error-password")
+    private WebElement passwordVal;
 
     @FindBy(id = "usernamereg-phone")
-    private WebElement phoneNumber;
+    private WebElement phoneNumberInput;
+
+    @FindBy(id = "reg-error-phone")
+    private WebElement phoneNumberVal;
 
     @FindBy(id = "usernamereg-month")
-    private WebElement monthOfBirth;
+    private WebElement monthOfBirthInput;
 
     @FindBy(id = "usernamereg-day")
-    private WebElement dayOfBirth;
+    private WebElement dayOfBirthInput;
 
     @FindBy(id = "usernamereg-year")
-    private WebElement yearOfBirth;
+    private WebElement yearOfBirthInput;
+
+    @FindBy(id = "reg-error-birthDate")
+    private WebElement birthdateVal;
+
+    @FindBy(id = "reg-submit-button")
+    private WebElement submitBtn;
 
     public SignUpPage  (WebDriver driver) {
         super(driver);
     }
 
     public String getEmailValidationMessage(){
-        return email.getText();
+        return emailVal.getText();
     }
 
     public String getPasswordValidationMessage(){
-        return password.getText();
+        return passwordVal.getText();
     }
 
     public String getPhoneNumberValidationMessage(){
-        return phoneNumber.getText();
+        return phoneNumberVal.getText();
     }
 
     public String getBirthDateValidationMessage(){
-        return dayOfBirth.getText();
+        return birthdateVal.getText();
     }
 
-    public SignUpPage fillName(){
-        firstName.sendKeys();
-        lastName.sendKeys();
+    public SignUpPage fillName(String firstName, String lastName){
+        firstNameInput.sendKeys(firstName);
+        lastNameInput.sendKeys(lastName);
         return new SignUpPage(driver);
     }
 
-    public SignUpPage fillEmail(){
-        email.sendKeys();
+    public SignUpPage fillEmail(String emailAddress){
+        emailInput.sendKeys(emailAddress);
         return new SignUpPage(driver);
     }
 
-    public SignUpPage fillPass(){
-        password.sendKeys();
+    public SignUpPage fillPass(String password){
+        passwordInput.sendKeys(password);
         return new SignUpPage(driver);
     }
 
-    public SignUpPage fillPhone(){
-        phoneNumber.sendKeys();
+    public SignUpPage fillPhone(String phoneNumber){
+        phoneNumberInput.sendKeys(phoneNumber);
         return new SignUpPage(driver);
     }
 
-    public SignUpPage fillDateOfBirth(){
-        monthOfBirth.click();
-        dayOfBirth.sendKeys();
-        yearOfBirth.sendKeys();
+    public SignUpPage fillDateOfBirth(String birthMonth, String birthDay, String birthYear){
+        monthOfBirthInput.sendKeys(birthMonth);
+        dayOfBirthInput.sendKeys(birthDay);
+        yearOfBirthInput.sendKeys(birthYear);
+        return new SignUpPage(driver);
+    }
+
+    public SignUpPage clickSubmit(){
+        submitBtn.click();
         return new SignUpPage(driver);
     }
 }
