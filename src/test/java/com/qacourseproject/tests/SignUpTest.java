@@ -38,7 +38,7 @@ public class SignUpTest extends TestUtil {
         Reporter.log("Successful entry to the Sign In page");
 
         SignUpPage signUpPage = signInPage.clickSignUpButton();
-        Reporter.log("Successful entry to the Sign In page");
+        Reporter.log("Successful entry to the Sign Up page");
 
         signUpPage.fillName(firstName, lastName);
         signUpPage.fillEmail(emailAddress);

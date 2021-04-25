@@ -20,7 +20,6 @@ public class DriverFactory {
         return driver;
     }
 
-    // Homework - implement the same for Chrome
     public static WebDriver getChromeDriver(int wait) {
         ChromeOptions options = new ChromeOptions();
 
